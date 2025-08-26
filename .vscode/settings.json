@@ -1,0 +1,36 @@
+{
+  "python.defaultInterpreterPath": "/usr/local/bin/python",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.formatting.provider": "black",
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestArgs": [
+    "tests"
+  ],
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.rulers": [88]
+  },
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/.pytest_cache": true,
+    "**/instance": true
+  },
+  "sqltools.connections": [
+    {
+      "name": "Flask PostgreSQL",
+      "driver": "PostgreSQL",
+      "server": "db",
+      "port": 5432,
+      "database": "flask_app",
+      "username": "postgres",
+      "password": "postgres"
+    }
+  ]
+}

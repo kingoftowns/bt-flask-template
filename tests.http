@@ -1,0 +1,93 @@
+### User API Tests for Flask Template
+### Base URL: http://localhost:8080/api/v1
+
+### 1. Create a new user
+POST http://localhost:8080/api/v1/users
+Content-Type: application/json
+
+{
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "john.doe@example.com",
+  "phone_number": "555-0123"
+}
+
+### 2. Create another user for testing
+POST http://localhost:8080/api/v1/users
+Content-Type: application/json
+
+{
+  "first_name": "Jane",
+  "last_name": "Smith",
+  "email": "jane.smith@example.com",
+  "phone_number": "555-0456"
+}
+
+### 3. Get all users (with default pagination)
+GET http://localhost:8080/api/v1/users
+
+### 4. Get all users with pagination
+GET http://localhost:8080/api/v1/users?page=1&per_page=5
+
+### 5. Get user by ID (replace 1 with actual user ID from create response)
+GET http://localhost:8080/api/v1/users/1
+
+### 6. Update user (replace 1 with actual user ID)
+PUT http://localhost:8080/api/v1/users/1
+Content-Type: application/json
+
+{
+  "first_name": "John",
+  "last_name": "Updated",
+  "email": "john.updated@example.com",
+  "phone_number": "555-9999"
+}
+
+### 7. Update user partially (replace 1 with actual user ID)
+PUT http://localhost:8080/api/v1/users/1
+Content-Type: application/json
+
+{
+  "phone_number": "555-1234"
+}
+
+### 8. Delete user (replace 1 with actual user ID)
+DELETE http://localhost:8080/api/v1/users/1
+
+### 9. Try to get deleted user (should return 404)
+GET http://localhost:8080/api/v1/users/1
+
+### 10. Test error cases
+
+### Create user with missing required fields
+POST http://localhost:8080/api/v1/users
+Content-Type: application/json
+
+{
+  "first_name": "Missing"
+}
+
+### Create user with invalid email
+POST http://localhost:8080/api/v1/users
+Content-Type: application/json
+
+{
+  "first_name": "Test",
+  "last_name": "User",
+  "email": "invalid-email"
+}
+
+### Try to get non-existent user
+GET http://localhost:8080/api/v1/users/999
+
+### Try to update non-existent user
+PUT http://localhost:8080/api/v1/users/999
+Content-Type: application/json
+
+{
+  "first_name": "Non",
+  "last_name": "Existent"
+}
+
+### Try to delete non-existent user
+DELETE http://localhost:8080/api/v1/users/999
